@@ -177,9 +177,10 @@ what your operating system is capable of.
                 lines.append("#endif")
 
         # A trailing '\n' keeps compilers happy...
+        contents = msg + '\n'.join(lines) + '\n'
         with open(filename, "w") as f:
-            f.write(msg + '\n'.join(lines) + '\n')
-
+            f.write(contents)
+        print(contents)
     return d
 
 
