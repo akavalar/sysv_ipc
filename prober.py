@@ -81,8 +81,7 @@ def compile_and_run(filename, linker_options=""):
     else:
         s = subprocess.Popen(["./prober/foo"],
                              stdout=subprocess.PIPE).communicate()[0]
-        print(s)
-        return s.strip().decode().split("\n")[1]
+        return s.strip().decode()
 
 
 def sniff_semtimedop():
