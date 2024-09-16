@@ -8,6 +8,21 @@
 static int
 my_getpagesize(void)
 {
+    printf("%d\n", 2);
+	return sysconf(_SC_PAGESIZE);
+}
+#elif defined(HAVE_SYSCONF)
+static int
+my_getpagesize(void)
+{
+    printf("%d\n", 3);
+	return sysconf(_SC_PAGESIZE);
+}
+#elif defined(_SC_PAGESIZE)
+static int
+my_getpagesize(void)
+{
+    printf("%d\n", 4);
 	return sysconf(_SC_PAGESIZE);
 }
 #else
@@ -15,8 +30,8 @@ my_getpagesize(void)
 #define my_getpagesize getpagesize
 #endif
 
-int main(void) { 
+int main(void) {
     printf("%d\n", my_getpagesize());
-    
-    return 0; 
+
+    return 0;
 }
